@@ -7,40 +7,33 @@ Your assignment is in **[TASKS.md](TASKS.md)**.
 
 ## Running it
 
-You need Docker with Compose v2.
-
-**If you received the image file** (`mini-bi-1.0.tar.gz`):
-
-```bash
-docker load -i mini-bi-1.0.tar.gz
-docker compose up -d
-```
-
-**If you only have the source**, build it yourself (generating the data takes 2-3 minutes):
+You need PHP 8.1+ (with the `pdo_sqlite` extension), Composer and [Git LFS](https://git-lfs.com)
+(the SQLite database, `database/database.sqlite`, is about 440 MB and is stored in LFS).
 
 ```bash
-docker compose up -d --build
+git lfs install
+git clone https://github.com/dbereste/mini_bi.git
+cd mini_bi
+composer install
+cp .env.example .env
+php artisan serve
 ```
 
-Open http://localhost:8080. The first page load is slow, and that is part of the assignment.
+Open http://localhost:8000. The first page load is slow, and that is part of the assignment.
 
-If port 8080 is taken, choose another one: `APP_PORT=8081 docker compose up -d`.
-
-Your working copy is mounted into the container, so edits on your machine are live.
-`vendor/` and the database live in Docker volumes.
+Some queries need more memory than PHP's default 128M; set `memory_limit = 512M` in your `php.ini`.
 
 ## Useful commands
 
 ```bash
-docker compose exec app php artisan migrate          # run your migrations
-docker compose exec app php artisan test             # run tests
-docker compose exec app sqlite3 /data/database.sqlite   # SQL shell
-docker compose exec app tail -f storage/logs/laravel.log
+php artisan migrate                      # run your migrations
+php artisan test                         # run tests
+sqlite3 database/database.sqlite         # SQL shell
+tail -f storage/logs/laravel.log
 
-docker compose down -v && docker compose up -d       # reset the database to its original state
+git checkout -- database/database.sqlite # reset the database to its committed state
+python3 scripts/generate_data.py database/database.sqlite   # or regenerate it from scratch (2-3 minutes)
 ```
-
-If you want `vendor/` on your machine too (for IDE autocompletion), run `composer install --no-scripts` locally.
 
 ## Layout
 
