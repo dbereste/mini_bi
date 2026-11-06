@@ -1,0 +1,222 @@
+:root {
+    --sidebar-bg: #1f2433;
+    --sidebar-text: #aeb4c5;
+    --accent: #4f6bed;
+    --bg: #f4f6fa;
+    --card-bg: #ffffff;
+    --text: #222838;
+    --text-soft: #c3c7cf;
+    --border: #e6e9f0;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    z-index: 100;
+}
+
+.sidebar-brand {
+    height: 64px;
+    line-height: 64px;
+    padding: 0 24px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 12px 24px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+}
+
+.sidebar-nav a.active,
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+}
+
+.sidebar-nav i {
+    margin-right: 10px;
+}
+
+/* ---------- Layout ---------- */
+.main {
+    margin-left: 240px;
+    min-width: 1100px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    padding: 0 32px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.page-title {
+    font-size: 20px;
+    margin: 0;
+}
+
+.data-badge {
+    font-size: 12px;
+    color: var(--text-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 4px 10px;
+}
+
+.content {
+    padding: 24px 32px;
+}
+
+.text-soft {
+    color: var(--text-soft);
+}
+
+/* ---------- Filters ---------- */
+.filters {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.filter-item label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+}
+
+.filter-item input {
+    width: 220px;
+    height: 34px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0 10px;
+}
+
+.btn-apply {
+    height: 34px;
+}
+
+.btn-export {
+    padding: 2px 6px;
+    font-size: 11px;
+}
+
+/* ---------- KPI cards ---------- */
+.kpi-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.kpi-card {
+    flex: 0 0 380px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+}
+
+.kpi-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--text-soft);
+}
+
+.info-tip {
+    font-size: 11px;
+    cursor: help;
+}
+
+.kpi-value {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 8px 0 4px;
+    white-space: nowrap;
+}
+
+.kpi-sub {
+    font-size: 12px;
+    color: var(--text-soft);
+    white-space: nowrap;
+}
+
+/* ---------- Table ---------- */
+.panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+}
+
+.panel-header h2 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.perf-table {
+    font-size: 13px;
+}
+
+.perf-table th,
+.perf-table td {
+    white-space: nowrap;
+}
+
+.perf-table th a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.perf-table .num {
+    text-align: right;
+}
+
+.perf-table .neg {
+    color: #d9534f;
+}
+
+.status {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #eef0f5;
+}
+
+.status-active { background: #e3f6ea; color: #8bc9a1; }
+.status-paused { background: #fff6e0; color: #e5c77a; }
+.status-terminated { background: #fdeaea; color: #e9a3a3; }
