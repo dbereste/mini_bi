@@ -7,15 +7,19 @@ Your assignment is in **[TASKS.md](TASKS.md)**.
 
 ## Running it
 
-You need PHP 8.1+ (with the `pdo_sqlite` extension), Composer and [Git LFS](https://git-lfs.com)
-(the SQLite database, `database/database.sqlite`, is about 440 MB and is stored in LFS).
+You need PHP 8.1+ (with the `pdo_sqlite` extension) and Composer.
+
+The SQLite database (about 440 MB) is not in the repository. Download it from
+the [Releases page](https://github.com/dbereste/mini_bi/releases) and put it at
+`database/database.sqlite`, or generate it yourself (Python 3, takes 2-3 minutes):
+`python3 scripts/generate_data.py database/database.sqlite`.
 
 ```bash
-git lfs install
 git clone https://github.com/dbereste/mini_bi.git
 cd mini_bi
 composer install
 cp .env.example .env
+# place database/database.sqlite here (see above)
 php artisan serve
 ```
 
@@ -31,8 +35,7 @@ php artisan test                         # run tests
 sqlite3 database/database.sqlite         # SQL shell
 tail -f storage/logs/laravel.log
 
-git checkout -- database/database.sqlite # reset the database to its committed state
-python3 scripts/generate_data.py database/database.sqlite   # or regenerate it from scratch (2-3 minutes)
+python3 scripts/generate_data.py database/database.sqlite   # reset the database (regenerate from scratch)
 ```
 
 ## Layout
