@@ -10,7 +10,7 @@ Your assignment is in **[TASKS.md](TASKS.md)**.
 You need PHP 8.1+ (with the `pdo_sqlite` extension) and Composer.
 
 The SQLite database (about 440 MB) is not in the repository. Download it from
-the [Releases page](https://github.com/dbereste/mini_bi/releases) and put it at
+the [Releases page](https://github.com/dbereste/mini_bi/releases) (`database.sqlite.zip`) and unzip it to
 `database/database.sqlite`, or generate it yourself (Python 3, takes 2-3 minutes):
 `python3 scripts/generate_data.py database/database.sqlite`.
 
