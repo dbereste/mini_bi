@@ -7,21 +7,19 @@ Your assignment is in **[TASKS.md](TASKS.md)**.
 
 ## Running it
 
-You need PHP 8.1+ (with the `pdo_sqlite` extension) and Composer.
-
-The SQLite database (about 440 MB) is not in the repository. Download it from
-the [Releases page](https://github.com/dbereste/mini_bi/releases) (`database.sqlite.zip`) and unzip it to
-`database/database.sqlite`, or generate it yourself (Python 3, takes 2-3 minutes):
-`python3 scripts/generate_data.py database/database.sqlite`.
+You need PHP 8.1+ (with the `pdo_sqlite` extension), Composer and Python 3.
 
 ```bash
 git clone https://github.com/dbereste/mini_bi.git
 cd mini_bi
 composer install
 cp .env.example .env
-# place database/database.sqlite here (see above)
+python3 scripts/generate_data.py   # builds database/database.sqlite (~440 MB, takes 2-3 minutes)
 php artisan serve
 ```
+
+On Windows, use `python` instead of `python3`. The generator only uses the Python standard library and is
+deterministic (seed 42), so everyone gets the same data.
 
 Open http://localhost:8000. The first page load is slow, and that is part of the assignment.
 
@@ -35,7 +33,7 @@ php artisan test                         # run tests
 sqlite3 database/database.sqlite         # SQL shell
 tail -f storage/logs/laravel.log
 
-python3 scripts/generate_data.py database/database.sqlite   # reset the database (regenerate from scratch)
+python3 scripts/generate_data.py         # reset the database to its original state
 ```
 
 ## Layout
